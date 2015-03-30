@@ -20,18 +20,20 @@ class main(object):
     self.InputSource = source
     self.Output = output
 
-  def worker(self, ips, output):
+  def worker(self, name, ips, output):
     for ip in ips:
       conn = Connection(ip)
       if conn.httpsConn():
-        print 'INFO: ', ip
+        print 'Worker ' + name + ': ', ip
         output.put(ip)
 
   def run(self):
     processes = []
     ips = self.loadIPS()
-    for chunk in self.splitGenerator(ips, int(ceil(len(ips)/4.0))):
-      processes.append(mp.Process(target=self.worker, args=(chunk, self.IPS)))
+    i = 0
+    for chunk in self.splitGenerator(ips, int(ceil(len(ips)/20.0))):
+      processes.append(mp.Process(target=self.worker, args=(str(i), chunk, self.IPS)))
+      i = i + 1
 
     for p in processes:
       p.start()
