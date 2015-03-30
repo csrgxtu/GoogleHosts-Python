@@ -22,6 +22,9 @@ class main(object):
       conn = Connection(ip)
       if conn.httpsConn():
         print ip
+        self.IPS.append(ip)
+
+    self.saveIPS()
 
   def loadIPS(self):
     res = []
@@ -29,6 +32,12 @@ class main(object):
       for line in myFile:
         res.append(line.rstrip())
     return res
+
+  def saveIPS(self):
+    with open(self.Output, 'w') as myFile:
+      for ip in self.IPS:
+        myFile.write(ip + '\n')
+
 
 m = main('../data/ips.txt')
 m.run()
