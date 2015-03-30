@@ -10,9 +10,12 @@ from netaddr import *
 
 class PrepareIPS(object):
   InputSource = None
+  Output = None
+  IPS = []
 
-  def __init__(self, source):
+  def __init__(self, source, output):
     self.InputSource = source
+    self.Output = output
 
   def run(self):
     IPBlocks = self.loadIPBlocks()
@@ -20,7 +23,9 @@ class PrepareIPS(object):
     for block in IPBlocks:
       ips = IPNetwork(block)
       for ip in list(ips):
-        print str(ip)
+        self.IPS.append(str(ip))
+
+    self.saveIPS()
 
   def loadIPBlocks(self):
     IPBlocks = []
@@ -30,3 +35,8 @@ class PrepareIPS(object):
         IPBlocks.append(line.rstrip())
 
     return IPBlocks
+
+  def saveIPS(self):
+    with open(self.Output, 'w') as myFile:
+      for ip in self.IPS:
+        myFile.write(ip + '\n')
