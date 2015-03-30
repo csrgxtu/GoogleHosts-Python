@@ -13,6 +13,7 @@ from math import ceil
 class main(object):
   InputSource = None
   IPS = mp.Queue()
+  RES = []
 
   def __init__(self, source):
     self.InputSource = source
@@ -21,14 +22,24 @@ class main(object):
     for ip in ips:
       conn = Connection(ip)
       if conn.httpsConn():
+        print 'INFO: ', ip
         self.IPS.put(ip)
 
   def run(self):
+    processes = []
     ips = self.loadIPS()
     for chunk in self.splitGenerator(ips, int(ceil(len(ips)/4.0))):
-      print 'DEBUG: ', len(chunk)
+      processes.append(mp.Process(target=self.worker, args=(chunk)))
 
-    #processes = [mp.Process(target=self.worker, args=(x,)) for x in range(4)]
+    for p in processes:
+      p.start()
+
+    for p in processes:
+      p.join()
+    
+    self.RES.extend(self.IPS.get for p in processes)
+
+    self.saveIPS(self.RES)
 
   def loadIPS(self):
     res = []
