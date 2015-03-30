@@ -7,3 +7,7 @@
 [Python Proramming Basic Math](http://en.wikibooks.org/wiki/Python_Programming/Basic_Math)
 
 [Python Ping host](http://stackoverflow.com/questions/2953462/pinging-servers-in-python)
+
+[Python socket test 443](http://www.pythonforbeginners.com/code-snippets-source-code/port-scanner-in-python)
+
+[Python nmap port](https://pypi.python.org/pypi/python-nmap)
