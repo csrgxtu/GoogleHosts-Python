@@ -11,3 +11,5 @@
 [Python socket test 443](http://www.pythonforbeginners.com/code-snippets-source-code/port-scanner-in-python)
 
 [Python nmap port](https://pypi.python.org/pypi/python-nmap)
+
+[Python package.json](https://devcenter.heroku.com/articles/python-pip)
