@@ -13,3 +13,5 @@
 [Python nmap port](https://pypi.python.org/pypi/python-nmap)
 
 [Python package.json](https://devcenter.heroku.com/articles/python-pip)
+
+[An introduction to parallel programming using Python's multiprocessing module](http://sebastianraschka.com/Articles/2014_multiprocessing_intro.html)
