@@ -8,6 +8,7 @@
 # Produced By CSRGXTU
 from Connection import Connection
 import multiprocessing as mp
+from math import ceil
 
 class main(object):
   InputSource = None
@@ -24,7 +25,7 @@ class main(object):
 
   def run(self):
     ips = self.loadIPS()
-    for chunk in self.splitGenerator(ips, len(ips)/4):
+    for chunk in self.splitGenerator(ips, int(ceil(len(ips)/4.0))):
       print 'DEBUG: ', len(chunk)
 
     #processes = [mp.Process(target=self.worker, args=(x,)) for x in range(4)]
