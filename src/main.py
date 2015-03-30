@@ -7,24 +7,27 @@
 #
 # Produced By CSRGXTU
 from Connection import Connection
+import multiprocessing as mp
 
 class main(object):
   InputSource = None
-  IPS = []
+  IPS = mp.Queue()
 
   def __init__(self, source):
     self.InputSource = source
 
-  def run(self):
-    ips = self.loadIPS()
+  def worker(self, ips):
     for ip in ips:
-      #print 'DEBUG: ', ip
       conn = Connection(ip)
       if conn.httpsConn():
-        print ip
-        self.IPS.append(ip)
+        self.IPS.put(ip)
 
-    self.saveIPS()
+  def run(self):
+    ips = self.loadIPS()
+    for chunk in self.splitGenerator(ips, len(ips)/4):
+      print 'DEBUG: ', len(chunk)
+
+    #processes = [mp.Process(target=self.worker, args=(x,)) for x in range(4)]
 
   def loadIPS(self):
     res = []
@@ -38,6 +41,10 @@ class main(object):
       for ip in self.IPS:
         myFile.write(ip + '\n')
 
+  def splitGenerator(self, lst, n):
+    """ Yield successive n-sized chunks from lst."""
+    for i in xrange(0, len(lst), n):
+      yield lst[i:i+n]
 
 m = main('../data/ips.txt')
 m.run()
