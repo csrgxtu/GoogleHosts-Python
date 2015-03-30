@@ -10,13 +10,24 @@ from Connection import Connection
 
 class main(object):
   InputSource = None
+  IPS = []
 
   def __init__(self, source):
     self.InputSource = source
-    pass
 
   def run(self):
-    pass
+    ips = self.loadIPS()
+    for ip in ips:
+      conn = Connection(ip)
+      if conn.httpsConn():
+        print ip
 
-m = main()
+  def loadIPS(self):
+    res = []
+    with open(self.InputSource, 'r') as myFile:
+      for line in myFile:
+        res.append(line.rstrip())
+    return res
+
+m = main('../data/ips.txt')
 m.run()
