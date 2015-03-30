@@ -6,21 +6,41 @@
 # Desc: testing the connection to a host
 #
 # Produced By CSRGXTU
+import socket
+import os
 
 class Connection(object):
-  host = None
+  IP = None
 
-  def __init__(self, host):
-    pass
+  def __init__(self, ip):
+    self.IP = ip
 
   def httpConn(self):
-    pass
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    res = sock.connect_ex((self.IP, 80))
+    sock.close()
+    if res == 0:
+      return True
+    return False
 
   def httpsConn(self):
-    pass
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    res = sock.connect_ex((self.IP, 443))
+    sock.close()
+    if res == 0:
+      return True
+    return False
 
-  def socketConn(self):
-    pass
+  def socketConn(self, port):
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    res = sock.connect.ex((self.IP, port))
+    sock.close()
+    if res == 0:
+      return True
+    return False
 
   def icmpConn(self):
-    pass
+    res = os.system("ping -c 5 " + self.IP)
+    if res == 0:
+      return True
+    return False
