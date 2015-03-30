@@ -17,6 +17,7 @@ class Connection(object):
 
   def httpConn(self):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.settimeout(3)
     res = sock.connect_ex((self.IP, 80))
     sock.close()
     if res == 0:
@@ -25,6 +26,7 @@ class Connection(object):
 
   def httpsConn(self):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.settimeout(3)
     res = sock.connect_ex((self.IP, 443))
     sock.close()
     if res == 0:
@@ -33,6 +35,7 @@ class Connection(object):
 
   def socketConn(self, port):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.settimeout(3)
     res = sock.connect.ex((self.IP, port))
     sock.close()
     if res == 0:

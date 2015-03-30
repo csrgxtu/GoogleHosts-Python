@@ -18,6 +18,7 @@ class main(object):
   def run(self):
     ips = self.loadIPS()
     for ip in ips:
+      print 'DEBUG: ', ip
       conn = Connection(ip)
       if conn.httpsConn():
         print ip
