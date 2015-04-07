@@ -31,7 +31,7 @@ class main(object):
     processes = []
     ips = self.loadIPS()
     i = 0
-    for chunk in self.splitGenerator(ips, int(ceil(len(ips)/20.0))):
+    for chunk in self.splitGenerator(ips, int(ceil(len(ips)/50.0))):
       processes.append(mp.Process(target=self.worker, args=(str(i), chunk, self.IPS)))
       i = i + 1
 
