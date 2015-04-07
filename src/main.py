@@ -13,8 +13,7 @@ from math import ceil
 class main(object):
   InputSource = None
   Output = None
-  IPS = mp.Queue()
-  RES = []
+  RES = mp.Queue()
 
   def __init__(self, source, output):
     self.InputSource = source
@@ -32,7 +31,7 @@ class main(object):
     ips = self.loadIPS()
     i = 0
     for chunk in self.splitGenerator(ips, int(ceil(len(ips)/20.0))):
-      processes.append(mp.Process(target=self.worker, args=(str(i), chunk, self.IPS)))
+      processes.append(mp.Process(target=self.worker, args=(str(i), chunk, self.RES)))
       i = i + 1
 
     for p in processes:
@@ -43,7 +42,7 @@ class main(object):
     
     self.RES.extend(self.IPS.get() for p in processes)
 
-    self.saveIPS(self.RES)
+    self.saveIPS([self.RES.get() for p in process])
 
   def loadIPS(self):
     res = []
