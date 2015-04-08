@@ -20,11 +20,14 @@ class main(object):
     self.Output = output
 
   def worker(self, name, ips, output):
+    res = []
     for ip in ips:
       conn = Connection(ip)
       if conn.httpsConn():
         print 'Worker ' + name + ': ', ip
-        output.put(ip)
+        #output.put(ip)
+        res.append(ip)
+    self.appendLst2File(res)
 
   def run(self):
     processes = []
@@ -55,6 +58,12 @@ class main(object):
     with open(self.Output, 'w') as myFile:
       for ip in ips:
         myFile.write(ip + '\n')
+
+  def appendLst2File(self, ips):
+    with open(self.Output, 'a') as myFile:
+      for ip in ips:
+        myFile.write(ip + '\n')
+      myFile.close()
 
   def splitGenerator(self, lst, n):
     """ Yield successive n-sized chunks from lst."""
