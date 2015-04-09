@@ -70,5 +70,6 @@ class main(object):
     for i in xrange(0, len(lst), n):
       yield lst[i:i+n]
 
-m = main('../data/ips.txt', '../data/ipsok.txt')
-m.run()
+if __name__ == '__main__': 
+	m = main('../data/ips.txt', '../data/ipsok.txt')
+	m.run()
