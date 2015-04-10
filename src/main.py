@@ -47,12 +47,5 @@ class main(object):
     
     self.RES.extend(self.IPS.get() for p in processes)
 
-    self.saveIPS([self.RES.get() for p in process])
-
-  def saveIPS(self, ips):
-    with open(self.Output, 'w') as myFile:
-      for ip in ips:
-        myFile.write(ip + '\n')
-
 m = main('../data/ips.txt', '../data/ipsok.txt')
 m.run()
