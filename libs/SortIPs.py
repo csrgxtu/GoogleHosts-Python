@@ -30,20 +30,26 @@ class SortIPs(object):
 
     return len(self.RES)
 
+  # sort ascending of the ips
+  #
+  # @return lst list
   def asc(self):
-    pass
+    return sorted(self.RES, key=lambda l: l[1])  
 
+  # sort descending or the ips
+  #
+  # @return lst list
   def desc(self):
-    pass
+    return sorted(self.RES, key=lambda l: l[1], reverse=True)
 
   def getIPS(self):
-    pass
+    return self.IPS
 
   def getRES(self):
-    pass
+    return self.RES
 
   def setIPS(self, ips):
-    pass
+    self.IPS = ips
 
   def setRES(self, lst):
-    pass
+    self.RES = lst
