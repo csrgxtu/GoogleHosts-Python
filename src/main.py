@@ -25,8 +25,8 @@ class main(object):
     for ip in ips:
       conn = Connection(ip)
       if conn.httpsConn():
-        print 'Worker ' + name + ': ', ip
         if isGoogleSearch('http', ip) or isGoogleSearch('https', ip):
+          print 'Worker ' + name + ': ', ip
           res.append(ip)
     appendLst2File(self.Output, res)
 
