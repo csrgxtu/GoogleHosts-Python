@@ -43,6 +43,7 @@ class main(object):
 
     for p in processes:
       p.join()
-    
-m = main('../data/ips.txt', '../data/ipsok.txt')
-m.run()
+
+if __name__ == '__main__': 
+	m = main('../data/ips.txt', '../data/ipsok.txt')
+	m.run()
