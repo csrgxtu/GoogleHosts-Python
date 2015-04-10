@@ -9,7 +9,7 @@
 from Connection import Connection
 import multiprocessing as mp
 from math import ceil
-from Utility import isGoogleSearch, splitGenerator
+from Utility import isGoogleSearch, splitGenerator, appendLst2File
 
 class main(object):
   InputSource = None
@@ -28,7 +28,7 @@ class main(object):
         print 'Worker ' + name + ': ', ip
         if isGoogleSearch('http', ip) or isGoogleSearch('https', ip):
           res.append(ip)
-    self.appendLst2File(res)
+    appendLst2File(res)
 
   def run(self):
     processes = []
