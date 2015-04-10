@@ -16,3 +16,5 @@
 [Python package.json](https://devcenter.heroku.com/articles/python-pip)
 
 [An introduction to parallel programming using Python's multiprocessing module](http://sebastianraschka.com/Articles/2014_multiprocessing_intro.html)
+
+[Python Count function execution time](https://docs.python.org/2/library/time.html)
