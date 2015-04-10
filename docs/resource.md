@@ -18,3 +18,5 @@
 [An introduction to parallel programming using Python's multiprocessing module](http://sebastianraschka.com/Articles/2014_multiprocessing_intro.html)
 
 [Python Count function execution time](https://docs.python.org/2/library/time.html)
+
+[Python 2d list sort](http://stackoverflow.com/questions/18563680/sorting-2d-list-python)
