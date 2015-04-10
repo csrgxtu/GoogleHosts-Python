@@ -9,6 +9,7 @@
 from Connection import Connection
 import multiprocessing as mp
 from math import ceil
+from Utility import isGoogleSearch
 
 class main(object):
   InputSource = None
@@ -25,8 +26,8 @@ class main(object):
       conn = Connection(ip)
       if conn.httpsConn():
         print 'Worker ' + name + ': ', ip
-        #output.put(ip)
-        res.append(ip)
+        if isGoogleSearch('http', ip) or isGoogleSearch('https', ip):
+          res.append(ip)
     self.appendLst2File(res)
 
   def run(self):
