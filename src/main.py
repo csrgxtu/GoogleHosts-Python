@@ -10,6 +10,7 @@ from Connection import Connection
 import multiprocessing as mp
 from math import ceil
 from Utility import isGoogleSearch, splitGenerator, appendLst2File
+from Utility import loadIPS
 
 class main(object):
   InputSource = None
@@ -28,11 +29,11 @@ class main(object):
         print 'Worker ' + name + ': ', ip
         if isGoogleSearch('http', ip) or isGoogleSearch('https', ip):
           res.append(ip)
-    appendLst2File(res)
+    appendLst2File(self.Output, res)
 
   def run(self):
     processes = []
-    ips = self.loadIPS()
+    ips = loadIPS(self.InputSource)
     i = 0
     for chunk in splitGenerator(ips, int(ceil(len(ips)/20.0))):
       processes.append(mp.Process(target=self.worker, args=(str(i), chunk, self.RES)))
@@ -47,13 +48,6 @@ class main(object):
     self.RES.extend(self.IPS.get() for p in processes)
 
     self.saveIPS([self.RES.get() for p in process])
-
-  def loadIPS(self):
-    res = []
-    with open(self.InputSource, 'r') as myFile:
-      for line in myFile:
-        res.append(line.rstrip())
-    return res
 
   def saveIPS(self, ips):
     with open(self.Output, 'w') as myFile:

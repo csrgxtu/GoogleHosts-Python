@@ -56,3 +56,17 @@ def appendLst2File(outFile, lst):
       myFile.write(item + '\n')
 
     myFile.close()
+
+# load IPs from file into list
+#
+# @param inputFile string
+# @return lst list
+def loadIPS(inputFile):
+  res = []
+
+  with open(inputFile, 'r') as myFile:
+    for line in myFile:
+      res.append(line.rstrip())
+    myFile.close()
+
+  return res
