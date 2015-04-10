@@ -41,13 +41,13 @@ class Download(object):
       return 0
     except Exception, e:
       if isinstance(e, urllib2.HTTPError):
-        print 'http error: {0}'.format(e.code)
+        #print 'http error: {0}'.format(e.code)
         return 1
       elif isinstance(e, urllib2.URLError)  and isinstance(e.reason, socket.timeout):
-        print 'url error: socket timeout {0}'.format(e.__str__())
+        #print 'url error: socket timeout {0}'.format(e.__str__())
         return 1
       else:
-        print 'misc error: ' + e.__str__()
+        #print 'misc error: ' + e.__str__()
         return 1
  
   def getURL(self):
