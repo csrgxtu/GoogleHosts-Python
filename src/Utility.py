@@ -34,4 +34,13 @@ def containsGoogle(html):
     return True
   else:
     return False
-  
+
+# split a list into m equal chunked
+#
+# @param lst list
+# @param n int
+# @return yield list
+def splitGenerator(lst, n):
+  """ Yield successive n-sized chunks from lst."""
+  for i in xrange(0, len(lst), n):
+    yield lst[i:i+n]
