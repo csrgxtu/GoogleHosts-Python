@@ -41,6 +41,14 @@ class SortIPs(object):
   # @return lst list
   def desc(self):
     return sorted(self.RES, key=lambda l: l[1], reverse=True)
+  
+  # get top n ips
+  #
+  # @param n int
+  # @return lst list
+  def getTopNIPs(self, n):
+    res = [x[0] for x in self.asc()]
+    return res[0:n]
 
   def getIPS(self):
     return self.IPS
