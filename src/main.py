@@ -15,13 +15,12 @@ from Utility import loadIPS
 class main(object):
   InputSource = None
   Output = None
-  RES = mp.Queue()
 
   def __init__(self, source, output):
     self.InputSource = source
     self.Output = output
 
-  def worker(self, name, ips, output):
+  def worker(self, name, ips):
     res = []
     for ip in ips:
       conn = Connection(ip)
@@ -36,7 +35,7 @@ class main(object):
     ips = loadIPS(self.InputSource)
     i = 0
     for chunk in splitGenerator(ips, int(ceil(len(ips)/20.0))):
-      processes.append(mp.Process(target=self.worker, args=(str(i), chunk, self.RES)))
+      processes.append(mp.Process(target=self.worker, args=(str(i), chunk)))
       i = i + 1
 
     for p in processes:
@@ -45,7 +44,5 @@ class main(object):
     for p in processes:
       p.join()
     
-    self.RES.extend(self.IPS.get() for p in processes)
-
 m = main('../data/ips.txt', '../data/ipsok.txt')
 m.run()
