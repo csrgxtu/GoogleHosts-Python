@@ -9,7 +9,7 @@
 from Connection import Connection
 import multiprocessing as mp
 from math import ceil
-from Utility import isGoogleSearch
+from Utility import isGoogleSearch, splitGenerator
 
 class main(object):
   InputSource = None
@@ -34,7 +34,7 @@ class main(object):
     processes = []
     ips = self.loadIPS()
     i = 0
-    for chunk in self.splitGenerator(ips, int(ceil(len(ips)/20.0))):
+    for chunk in splitGenerator(ips, int(ceil(len(ips)/20.0))):
       processes.append(mp.Process(target=self.worker, args=(str(i), chunk, self.RES)))
       i = i + 1
 
@@ -65,11 +65,6 @@ class main(object):
       for ip in ips:
         myFile.write(ip + '\n')
       myFile.close()
-
-  def splitGenerator(self, lst, n):
-    """ Yield successive n-sized chunks from lst."""
-    for i in xrange(0, len(lst), n):
-      yield lst[i:i+n]
 
 m = main('../data/ips.txt', '../data/ipsok.txt')
 m.run()
