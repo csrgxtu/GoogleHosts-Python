@@ -6,9 +6,13 @@
 # Desc: the entrance file of this project
 #
 # Produced By CSRGXTU
-from Connection import Connection
-import multiprocessing as mp
 from math import ceil
+import multiprocessing as mp
+
+import sys
+sys.path.insert(0, '../libs')
+
+from Connection import Connection
 from Utility import isGoogleSearch, splitGenerator, appendLst2File
 from Utility import loadIPS
 
