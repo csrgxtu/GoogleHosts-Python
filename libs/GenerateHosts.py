@@ -16,20 +16,23 @@ class GenerateHosts(object):
   IPS = None
   DOMAINS = None
 
-  def __init__(self, Input, Output, ipFile):
-    self.Input = Input
-    self.Output = Output
+  def __init__(self, domainFile, hostFile, ipFile):
+    self.Input = domainFile
+    self.Output = hostFile
 
     self.IPS = loadLst(ipFile)
-    self.DOMAINS = loadLst(Input)
+    self.DOMAINS = loadLst(domainFile)
   
   def run(self):
     # get quickest ip
     s = SortIPs(self.IPS)
     IP = s.getTopNIPs(1)
-
+    
+    res = []
     for domain in self.DOMAINS:
-      print IP, domain
+      res.append(IP + '  ' + domain)
+
+    saveLst2File(self.Output, res)
 
   def getInput(self):
     return self.Input
