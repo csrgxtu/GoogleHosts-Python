@@ -7,7 +7,7 @@
 #
 # Produced By CSRGXTU
 from SortIPs import SortIPs
-from Utility import loadLst
+from Utility import loadLst, saveLst2File
 
 class GenerateHosts(object):
   Input = None
@@ -29,8 +29,10 @@ class GenerateHosts(object):
     IP = s.getTopNIPs(1)
     
     res = []
+    res.append('127.0.0.1    localhost')
     for domain in self.DOMAINS:
-      res.append(IP + '  ' + domain)
+      tmp = IP[0] + '    ' + domain
+      res.append(tmp)
 
     saveLst2File(self.Output, res)
 

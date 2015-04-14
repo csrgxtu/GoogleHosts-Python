@@ -63,7 +63,7 @@ def appendLst2File(outFile, lst):
 # @param lst list
 # @return void
 def saveLst2File(outFile, lst):
-  with open(outFile, 'a') as myFile:
+  with open(outFile, 'w') as myFile:
     for item in lst:
       myFile.write(item + '\n')
 
