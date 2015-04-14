@@ -20,3 +20,9 @@
 [Python Count function execution time](https://docs.python.org/2/library/time.html)
 
 [Python 2d list sort](http://stackoverflow.com/questions/18563680/sorting-2d-list-python)
+
+[Charming Python: Make Python run as fast as C with Psyco](http://www.ibm.com/developerworks/library/l-psyco/)
+
+[How to make your python code run faster](http://earthpy.org/speed.html)
+
+[PerformanceTips](https://wiki.python.org/moin/PythonSpeed/PerformanceTips)
