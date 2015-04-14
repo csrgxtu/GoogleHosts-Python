@@ -7,35 +7,45 @@
 #
 # Produced By CSRGXTU
 from SortIPs import SortIPs
-from Utility import *
+from Utility import loadLst
 
 class GenerateHosts(object):
   Input = None
   Output = None
-  IPS = None
 
-  def __init__(self, Input, Output, IPS):
+  IPS = None
+  DOMAINS = None
+
+  def __init__(self, Input, Output, ipFile):
     self.Input = Input
     self.Output = Output
-    self.IPS = IPS
+
+    self.IPS = loadLst(ipFile)
+    self.DOMAINS = loadLst(Input)
   
   def run(self):
     pass
 
   def getInput(self):
-    pass
+    return self.Input
 
   def getOutput(self):
-    pass
+    return self.Output
   
   def getIPS(self):
-    pass
+    return self.IPS
+  
+  def getDOMAINS(self):
+    return self.DOMAINS
 
-  def setInput(self):
-    pass
+  def setInput(self, Input):
+    self.Input = Input
 
-  def setOutput(self):
-    pass
+  def setOutput(self, Output):
+    self.Output = Output
 
-  def setIPS(self):
-    pass
+  def setIPS(self, lst):
+    self.IPS = lst
+
+  def setDOMAINS(self, lst):
+    self.DOMAINS = lst
