@@ -24,7 +24,12 @@ class GenerateHosts(object):
     self.DOMAINS = loadLst(Input)
   
   def run(self):
-    pass
+    # get quickest ip
+    s = SortIPs(self.IPS)
+    IP = s.getTopNIPs(1)
+
+    for domain in self.DOMAINS:
+      print IP, domain
 
   def getInput(self):
     return self.Input
