@@ -57,6 +57,18 @@ def appendLst2File(outFile, lst):
 
     myFile.close()
 
+# save list 2 file
+#
+# @param outFile string
+# @param lst list
+# @return void
+def saveLst2File(outFile, lst):
+  with open(outFile, 'a') as myFile:
+    for item in lst:
+      myFile.write(item + '\n')
+
+    myFile.close()
+
 # load IPs from file into list
 #
 # @param inputFile string
