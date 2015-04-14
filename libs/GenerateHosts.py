@@ -12,9 +12,12 @@ from Utility import *
 class GenerateHosts(object):
   Input = None
   Output = None
+  IPS = None
 
-  def __init__(self, Input, Output):
-    pass
+  def __init__(self, Input, Output, IPS):
+    self.Input = Input
+    self.Output = Output
+    self.IPS = IPS
   
   def run(self):
     pass
@@ -24,9 +27,15 @@ class GenerateHosts(object):
 
   def getOutput(self):
     pass
+  
+  def getIPS(self):
+    pass
 
   def setInput(self):
     pass
 
   def setOutput(self):
+    pass
+
+  def setIPS(self):
     pass

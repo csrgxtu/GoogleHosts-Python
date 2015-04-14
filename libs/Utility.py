@@ -70,3 +70,17 @@ def loadIPS(inputFile):
     myFile.close()
 
   return res
+
+# load list from file into list
+#
+# @param inputFile string
+# @return lst list
+def loadLst(inputFile):
+  res = []
+
+  with open(inputFile, 'r') as myFile:
+    for line in myFile:
+      res.append(line.rstrip())
+    myFile.close()
+
+  return res
