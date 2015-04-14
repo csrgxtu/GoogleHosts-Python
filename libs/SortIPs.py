@@ -16,7 +16,9 @@ class SortIPs(object):
   def __init__(self, ips):
     self.IPS = ips
     self.RES = []
-  
+    
+    self.addTimes()
+
   # add connection times to the ips
   #
   # @return num int how many ips added times
